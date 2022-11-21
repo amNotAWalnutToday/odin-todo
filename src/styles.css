@@ -1,3 +1,42 @@
 :root {
-    background: red;
+    --header: #44403c;
+    --navbar: #e7e5e4;
+    --page: #fafaf9;
+    --main-font: #ffffff;
+    --secondary-font: #ffffff;
+    --button-c: #ffffff;
+
+    --border: 2px solid #ffffff;
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#container {
+    display:grid;
+    grid-template-areas: 
+        'header header'
+        'nav page';
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: 5rem 1fr;
+    height: 100vh;
+    width: 100vw;
+}
+
+#header {
+    grid-area: header;
+    background-color: var(--header);
+}
+
+#navbar {
+    grid-area: nav;
+    background-color: var(--navbar);
+}
+
+#todo {
+    grid-area: page;
+    background-color: var(--page);
 }
