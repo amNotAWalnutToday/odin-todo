@@ -1,4 +1,5 @@
 import removeForm from './removeForm';
+import createProject from './project';
 
 const addForm = (() => {
     const createElement = element => {
@@ -58,6 +59,7 @@ const addForm = (() => {
     const appendCreateButton = name => {
         const _element = setAttribute('button','id','create');
         _element.textContent = name;
+        _element.addEventListener('click', createProject.getTitleInput);
         buttonContainer.appendChild(_element);
     }
 
