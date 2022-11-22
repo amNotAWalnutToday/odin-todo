@@ -30,7 +30,7 @@
 }
 
 /*Header*/
-#header, #navbar {
+#header, #navbar, .form{
     box-shadow: 0px 0px 10px 2px var(--button-c);
     z-index: 1;
 }
@@ -46,7 +46,7 @@
     background-color: var(--navbar);
 }
 
-#nav, #create-project {
+#nav, #create-project, .form {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -66,6 +66,30 @@
     justify-content: space-between;
 }
 
+/*popup*/
+.hidden {
+    position: absolute;
+    top: 35%;
+    left: 45%;
+}
+
+.form {
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    width: calc(250px + 10vw);
+    height: 250px;
+    border: var(--border);
+    background-color: var(--page);
+}
+
+.header {
+    background-color: var(--header);
+}
+
+.fade {
+    opacity: 0.5;
+}
+
 /*todo-page-contents*/
 #todo {
     grid-area: page;
@@ -78,11 +102,22 @@
     font-size: 60px;
     font-family: rubik marker hatch;
     color: var(--secondary-font);
-    -webkit-text-stroke: 1px var(--navbar);
+    -webkit-text-stroke: 2.5px var(--navbar);
 }
 
 #create-project * {
     font-size: 20px;
+}
+
+.form h1 {
+    width: 100%;
+    color: var(--secondary-font);
+    text-align: center;
+    transform: translateY(-16px);
+}
+
+.form label, .form input{
+    margin: 0 3.5rem;
 }
 
 /*components*/
@@ -100,7 +135,7 @@
     background-color: var(--page);
 }
 
-#nav > button:hover, #nav > button:focus, .add:hover        {
+#nav > button:enabled:hover, #nav > button:focus, .add:enabled:hover        {
     outline: var(--border);
     filter: brightness(1.2);
     cursor: pointer;
@@ -118,4 +153,32 @@
     border-radius: 50%;
     color: var(--secondary-font);
     background-color: var(--button-c);
+}
+
+/*popup*/
+#popup input {
+    width: 75%;
+}
+
+.form div {
+    position:relative;
+    top: 50px;
+    display:flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin: 0 1rem;
+}
+
+#popup button {
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+}
+
+#cancel {
+    background: linear-gradient(270deg,var(--page),var(--navbar)); 
+}
+
+#create {
+    color: var(--secondary-font);
+    background: linear-gradient(90deg,var(--header),var(--main-font));
 }

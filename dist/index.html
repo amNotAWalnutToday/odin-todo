@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDo</title>
     <script src="./main.js" defer></script>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik+Marker+Hatch&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Rubik+Marker+Hatch&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="container">
@@ -15,23 +15,26 @@
         </div>
         <div id="navbar">
             <div id="nav">
-                <button>All</button>
-                <button>Today</button>
-                <button>This Week</button>
-                <button>Important</button>
-                <button>History</button>
+                <button class="button">All</button>
+                <button class="button">Today</button>
+                <button class="button">This Week</button>
+                <button class="button">Important</button>
+                <button class="button">History</button>
             </div>
             <div id="create-project">
                 <div class="inline-project">
                     <h3>Projects</h3>
-                    <button class="add">+</button>
+                    <button class="add button">+</button>
                 </div>
                 <hr>
                 <p>ToDo list</p>
                 <hr>
             </div>
         </div>
-        <div id="todo"></div>
+        <div id="todo">
+            
+        </div>
     </div>
+    <div id="popup" class="hidden"></div>
 </body>
 </html>
