@@ -67,6 +67,10 @@
 }
 
 /*popup*/
+.hide {
+    visibility: hidden;
+}
+
 .hidden {
     position: absolute;
     top: 35%;

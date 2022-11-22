@@ -1,5 +1,6 @@
 import './styles.css';
 import addForm from './addForm';
+import removeForm from './removeForm';
 
 const project = (title,description,dueDate,priority) => {
 
@@ -19,15 +20,16 @@ const createProject = (() => {
 })();
 
 const eventAdder = (() => {
-    const button = document.querySelector('.add')
+    const button = document.querySelector('#add-button');
     
     const addEvent = () => {
-        button.addEventListener('click', );
+        button.addEventListener('click', addForm.showForm);
     }
+
     return {
-        addEvent
+        addEvent,
     }
 })();
 
 createProject.create('default','this is test','today','high');
-addForm.showForm();
+eventAdder.addEvent();

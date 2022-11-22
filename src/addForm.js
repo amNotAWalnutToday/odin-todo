@@ -1,3 +1,5 @@
+import removeForm from './removeForm';
+
 const addForm = (() => {
     const createElement = element => {
         const _element = document.createElement(element);
@@ -12,6 +14,7 @@ const addForm = (() => {
 
     const appendDiv = () => {
         const _element = setAttribute('div','class','form');
+        _element.classList.add('hide');
         popup.appendChild(_element)
         return _element
     } 
@@ -46,14 +49,19 @@ const addForm = (() => {
     const appendCancelButton = name => {
         const _element = setAttribute('button','id','cancel');
         _element.textContent = name;
+        _element.addEventListener('click', removeForm.remove);
         buttonContainer.appendChild(_element);
     }
+
+    appendCancelButton('Cancel');
 
     const appendCreateButton = name => {
         const _element = setAttribute('button','id','create');
         _element.textContent = name;
         buttonContainer.appendChild(_element);
     }
+
+    appendCreateButton('Create');
 
     const fadeContainer = () => {
         const _element = document.querySelector('#container');
@@ -70,13 +78,12 @@ const addForm = (() => {
         appendLabel('Title');
         appendHeader('Add Project');
         appendButtonContainer();
-        appendCancelButton('Cancel');
-        appendCreateButton('Create');
         fadeContainer();
+        formContainer.classList.remove('hide')
     }
 
     return {
-        showForm
+        showForm,
     };
 })();
 
