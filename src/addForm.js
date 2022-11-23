@@ -73,6 +73,11 @@ const addForm = (() => {
         buttons.forEach(button => {
             button.setAttribute('disabled','true');
         });
+
+        const projects = document.querySelectorAll('.project')
+        projects.forEach(button => {
+            button.setAttribute('class','project');
+        });
     }
     
     const showForm = () => {

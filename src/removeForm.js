@@ -11,6 +11,11 @@ const removeForm = (() => {
         buttons.forEach(button => {
             button.disabled = false;
         })
+
+        const projects = document.querySelectorAll('.project')
+        projects.forEach(project =>{
+            project.classList.add('button');
+        })
     }
 
     const remove = () => {

@@ -3,6 +3,7 @@ import createProject from './project';
 import addForm from './addForm';
 import removeForm from './removeForm';
 import showProject from './projectDOM';
+import changeTab from './tabs';
 
 const eventAdder = (() => {
     const button = document.querySelector('#add-button');

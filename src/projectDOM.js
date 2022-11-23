@@ -9,7 +9,8 @@ const showProject = (() => {
 
         //div
         const _container = document.createElement('div')
-        _container.setAttribute('class','project');
+        _container.setAttribute('class','project button');
+        _container.setAttribute('tabindex','0');
         _container.setAttribute('id',child.title);
         _container.addEventListener('click', e => displayProject(child.title));
         _list.appendChild(_container);
@@ -46,13 +47,17 @@ const showProject = (() => {
         const _page = document.querySelector('#todo');
         _page.innerHTML +=  `<div>
                                 <h1>${title}</h1>
-                                <button id="add-task">+</button>    
+                                <button id="add-task" class="add">+</button>    
                             </div>
                             <div>
-                                <label>Due Date</label>
-                                <input type="date"/>
-                                <label>Important</label>
-                                <input type="checkbox"/>
+                                <div>
+                                    <label>Due Date</label>
+                                    <input type="date"/>
+                                </div>
+                                <div>
+                                    <label>Important</label>
+                                    <input type="checkbox"/>
+                                </div>
                             </div>`; 
         document.querySelector('#add-task').addEventListener('click',displayTask);
     }
