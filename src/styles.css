@@ -61,6 +61,16 @@
    margin: 0 2.5rem;
 }
 
+.project {
+    display: flex;
+    overflow: hidden;
+    justify-content: space-between;
+    align-items: center;
+    text-align:  left;
+    width: unset !important;
+    height: unset !important;
+}
+
 .inline-project {
     display:flex;
     justify-content: space-between;
@@ -113,6 +123,7 @@
     font-size: 20px;
 }
 
+
 .form h1 {
     width: 100%;
     color: var(--secondary-font);
@@ -126,7 +137,7 @@
 
 /*components*/
 /*navbar*/
-#nav > button {
+#nav > button, .project {
     width: 50%;
     height: 25px;
     padding: 0.5em 1rem;
@@ -151,12 +162,21 @@
 }
 
 /*projects*/
-.add {
+.add, .nav-project button {
     padding: 0 6px;
     border: none;
     border-radius: 50%;
     color: var(--secondary-font);
+}
+
+.add {
     background-color: var(--button-c);
+}
+
+.nav-project button {
+    width: 25px;
+    height: 25px;
+    background-color: crimson;
 }
 
 /*popup*/
