@@ -1,5 +1,6 @@
 import showProject from './projectDOM';
 import changeTab from './tabs';
+import eventAdder from './index';
 
 const project = (title,description,dueDate,priority) => {
 
@@ -20,6 +21,7 @@ const createProject = (() => {
         const _value = document.querySelector('#title').value;
         const _element = create(_value,'','','');
         showProject.pushToNav(_element);
+        eventAdder.addE();
     }
 
     const create = (title,description,dueDate,priority) => {

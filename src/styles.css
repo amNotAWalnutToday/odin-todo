@@ -180,9 +180,13 @@
     cursor: pointer;
 }
 
-#nav > button:focus-within, .project:focus-within, button.selected {
+#nav > button:focus-within, .selected {
     color: var(--secondary-font) !important;
     background-color: var(--button-c) !important;
+}
+
+.project > p {
+    pointer-events: none;
 }
 
 /*projects*/

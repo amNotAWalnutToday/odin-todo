@@ -1,6 +1,7 @@
 import createProject from './project';
 import {removeProject} from './project';
 import changeTab from './tabs';
+import eventAdder from './index';
 
 const showProject = (() => {
 
@@ -18,6 +19,7 @@ const showProject = (() => {
 
         //project title
         const _elementTitle = document.createElement('p');
+        _elementTitle.setAttribute('class','unselect');
         _elementTitle.textContent = child.title;
         _container.appendChild(_elementTitle);
 
@@ -105,6 +107,7 @@ const showProject = (() => {
     return {
         pushToNav,
         displayProject,
+        hideProject,
     }
 })();
 

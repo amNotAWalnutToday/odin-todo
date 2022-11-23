@@ -12,8 +12,21 @@ const eventAdder = (() => {
         button.addEventListener('click', addForm.showForm);
     }
 
+    const addE = () => {
+        const buttons = document.querySelectorAll('.button')
+        buttons.forEach(button => {
+            button.addEventListener('click', e => {
+                buttons.forEach(button => {
+                    button.classList.remove('selected');
+                })
+                e.target.classList.add('selected');
+            })
+        });
+    }
+
     return {
         addEvent,
+        addE,
     }
 })();
 
@@ -24,4 +37,7 @@ const defaultProject = () => {
 
 defaultProject();
 eventAdder.addEvent();
+eventAdder.addE();
 showProject.displayProject(createProject.projects[0]);
+
+export default eventAdder

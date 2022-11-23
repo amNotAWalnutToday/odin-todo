@@ -1,5 +1,7 @@
 import removeForm from './removeForm';
 import createProject from './project';
+import showProject from './projectDOM';
+import changeTab from './tabs';
 
 const addForm = (() => {
     const createElement = element => {
@@ -76,7 +78,7 @@ const addForm = (() => {
 
         const projects = document.querySelectorAll('.project')
         projects.forEach(button => {
-            button.setAttribute('class','project');
+            button.setAttribute('class','project button');
         });
     }
     
@@ -86,7 +88,9 @@ const addForm = (() => {
         appendHeader('Add Project');
         appendButtonContainer();
         fadeContainer();
-        formContainer.classList.remove('hide')
+        formContainer.classList.remove('hide');
+        showProject.hideProject();
+        changeTab.tab = '';
     }
 
     return {
