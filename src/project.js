@@ -1,13 +1,20 @@
 import showProject from './projectDOM';
+import changeTab from './tabs';
 
 const project = (title,description,dueDate,priority) => {
 
     return { title, description, dueDate, priority }
 }
 
+const task = (project, task, dueDate, priority) => {
+
+    return { project, task, dueDate, priority };
+}
+
 const createProject = (() => {
 
     let projects = [];
+    let tasks = [];
 
     const getTitleInput = () => {
         const _value = document.querySelector('#title').value;
@@ -23,10 +30,23 @@ const createProject = (() => {
         return _project; 
     }
 
+    const getTaskInput = () => {
+        //creates a task and
+        //gets title from input
+    }
+
+    const createTask = (project, task, dueDate, priority) => {
+        const _task = task(project, task, dueDate, priority);
+        tasks.push(_task);
+
+        return _task;
+    }
+
     return {
         create,
         getTitleInput,
         projects,
+        tasks,
     }
 })();
 
