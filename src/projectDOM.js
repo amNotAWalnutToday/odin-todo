@@ -12,7 +12,7 @@ const showProject = (() => {
         _container.setAttribute('class','project button');
         _container.setAttribute('tabindex','0');
         _container.setAttribute('id',child.title);
-        _container.addEventListener('click', e => displayProject(child.title));
+        _container.addEventListener('click', e => displayProject(child));
         _list.appendChild(_container);
 
         //project title
@@ -39,14 +39,14 @@ const showProject = (() => {
         return _button;
     }
 
-    const displayProject = title => {
-        if(changeTab.tab == title) return;
+    const displayProject = project => {
+        if(changeTab.tab === project.title) return;
         hideProject();
-        changeTab.tab = title;
+        changeTab.tab = project.title;
         console.log(changeTab.tab);
         const _page = document.querySelector('#todo');
         _page.innerHTML +=  `<div>
-                                <h1>${title}</h1>
+                                <h1>${project.title}</h1>
                                 <button id="add-task" class="add">+</button>    
                             </div>
                             <div>
@@ -56,10 +56,28 @@ const showProject = (() => {
                                 </div>
                                 <div>
                                     <label>Important</label>
-                                    <input type="checkbox"/>
+                                    <input id="project-${project.title}" type="checkbox"/>
                                 </div>
                             </div>`; 
         document.querySelector('#add-task').addEventListener('click',displayTask);
+        document.querySelector('[type=checkbox]').addEventListener('click', e => setImportant(project.title));
+        setChecked(project);
+    }
+
+    const setImportant = id => {
+        const check = document.querySelector(`[type='checkbox']`);
+        const index = createProject.returnIndex(id);
+        console.log(index,id);
+        check.checked 
+            ? createProject.projects[index].priority = 'important'
+            : container.remove();
+    }
+
+    const setChecked = id => {
+        const check = document.querySelector('[type="checkbox"]')
+        id.priority === 'important'
+            ? check.checked = true
+            : check.checked = false;
     }
 
     const displayTask = () => {
@@ -73,7 +91,8 @@ const showProject = (() => {
     }
 
     return {
-        pushToNav
+        pushToNav,
+        displayProject,
     }
 })();
 

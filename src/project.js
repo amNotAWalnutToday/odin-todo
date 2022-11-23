@@ -42,9 +42,16 @@ const createProject = (() => {
         return _task;
     }
 
+    const returnIndex = project => {
+        for(let i = 0; i < projects.length; i++){
+            if(project === projects[i].title) return i;
+        }
+    }
+
     return {
         create,
         getTitleInput,
+        returnIndex,
         projects,
         tasks,
     }

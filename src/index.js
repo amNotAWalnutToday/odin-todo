@@ -25,3 +25,4 @@ const defaultProject = () => {
 
 defaultProject();
 eventAdder.addEvent();
+showProject.displayProject('ToDo List');
