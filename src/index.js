@@ -19,10 +19,9 @@ const eventAdder = (() => {
 
 const defaultProject = () => {
     const _element = createProject.create('ToDo List','','','');
-    console.log(_element);
     showProject.pushToNav(_element);
 }
 
 defaultProject();
 eventAdder.addEvent();
-showProject.displayProject('ToDo List');
+showProject.displayProject(createProject.projects[0]);

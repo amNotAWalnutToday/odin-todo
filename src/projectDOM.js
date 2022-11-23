@@ -4,6 +4,7 @@ import changeTab from './tabs';
 
 const showProject = (() => {
 
+    //navbar DOM
     const pushToNav = child => {
         const _list = document.querySelector('.nav-project')
 
@@ -39,6 +40,7 @@ const showProject = (() => {
         return _button;
     }
 
+    //page display
     const displayProject = project => {
         if(changeTab.tab === project.title) return;
         hideProject();
@@ -52,25 +54,33 @@ const showProject = (() => {
                             <div>
                                 <div>
                                     <label>Due Date</label>
-                                    <input type="date"/>
+                                    <input type="date" value="${project.dueDate}"/>
                                 </div>
                                 <div>
                                     <label>Important</label>
-                                    <input id="project-${project.title}" type="checkbox"/>
+                                    <input type="checkbox"/>
                                 </div>
                             </div>`; 
         document.querySelector('#add-task').addEventListener('click',displayTask);
         document.querySelector('[type=checkbox]').addEventListener('click', e => setImportant(project.title));
+        document.querySelector('[type="date"]').addEventListener('change', e => setDate(project.title));
         setChecked(project);
     }
+    //change date
+    const setDate = id => {
+        const date = document.querySelector('[type="date"]');
+        const index = createProject.returnIndex(id);
+        createProject.projects[index].dueDate = date.value;
+    }
 
+    //change priority
     const setImportant = id => {
         const check = document.querySelector(`[type='checkbox']`);
         const index = createProject.returnIndex(id);
         console.log(index,id);
         check.checked 
             ? createProject.projects[index].priority = 'important'
-            : container.remove();
+            : createProject.projects[index].priority = '';
     }
 
     const setChecked = id => {
@@ -80,11 +90,13 @@ const showProject = (() => {
             : check.checked = false;
     }
 
+    //tasks
     const displayTask = () => {
         const _task = document.querySelector('#tasks');
         _task.innerHTML = '<h1>Hello world</h1>'
     }
 
+    //remove from main page
     const hideProject = () => {
         const _page = document.querySelector('#todo');
         _page.innerHTML = '';
