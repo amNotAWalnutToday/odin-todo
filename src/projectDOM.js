@@ -55,12 +55,12 @@ const showProject = (() => {
                             </div>
                             <div>
                                 <div>
-                                    <label>Due Date</label>
-                                    <input type="date" value="${project.dueDate}"/>
+                                    <label for="date">Due Date</label>
+                                    <input id="date" type="date" value="${project.dueDate}"/>
                                 </div>
                                 <div>
-                                    <label>Important</label>
-                                    <input type="checkbox"/>
+                                    <label for="priority">Important</label>
+                                    <input id="priority" type="checkbox"/>
                                 </div>
                             </div>`; 
         document.querySelector('#add-task').addEventListener('click',displayTask);

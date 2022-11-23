@@ -12,7 +12,9 @@
     color: var(--main-font);
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -30,7 +32,9 @@
 }
 
 /*Header*/
-#header, #navbar, .form{
+#header,
+#navbar,
+.form{
     box-shadow: 0px 0px 10px 2px var(--button-c);
     z-index: 1;
 }
@@ -46,7 +50,9 @@
     background-color: var(--navbar);
 }
 
-#nav, #create-project, .form {
+#nav,
+#create-project,
+.form {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -127,12 +133,19 @@
     padding: 0 10rem;
 }
 
+#todo > div > div {
+    display:flex;
+    align-items: center;
+    gap: 10px;
+}
+
 #todo > div:first-child {
     margin-top: 2.5rem;
 }
 
 /*text*/
-#header > h1, #todo h1 {
+#header > h1,
+#todo h1 {
     font-size: 60px;
 }
 
@@ -143,10 +156,15 @@
     -webkit-text-stroke: 2.5px var(--navbar);
 }
 
-#create-project *, #todo p {
+#create-project *,
+#todo p,
+#todo label {
     font-size: 20px;
 }
 
+.project > p {
+    pointer-events: none;
+}
 
 .form h1 {
     width: 100%;
@@ -155,13 +173,15 @@
     transform: translateY(-16px);
 }
 
-.form label, .form input{
+.form label,
+.form input{
     margin: 0 3.5rem;
 }
 
 /*components*/
 /*navbar*/
-#nav > button, .project {
+#nav > button,
+.project {
     width: 50%;
     height: 25px;
     padding: 0.5em 1rem;
@@ -174,27 +194,38 @@
     background-color: var(--page);
 }
 
-#nav > button:enabled:hover, #nav > button:focus, .add:enabled:hover, .project.button:hover {
+#nav > button:enabled:hover,
+#nav > button:focus,
+.add:enabled:hover,
+.project.button:hover,
+.project > button:hover,
+#popup button:hover {
     outline: var(--border);
     filter: brightness(1.2);
     cursor: pointer;
 }
 
-#nav > button:focus-within, .selected {
+#nav > button:focus-within,
+.selected {
     color: var(--secondary-font) !important;
     background-color: var(--button-c) !important;
 }
 
-.project > p {
-    pointer-events: none;
-}
+
 
 /*projects*/
-.add, .nav-project button {
+.add,
+.nav-project button {
     padding: 0 6px;
     border: none;
     border-radius: 50%;
     color: var(--secondary-font);
+}
+
+.add:hover,
+.nav-project button:hover {
+    animation: spin 3s infinite alternate;
+    transition: ease;
 }
 
 .add {
@@ -202,14 +233,21 @@
 }
 
 .nav-project button {
-    width: 25px;
-    height: 25px;
     background-color: crimson;
 }
 
 /*ToDo list Page*/
 #todo > div:first-child > button {
     height: 20px;
+}
+
+#todo input[type="date"]{
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+#todo input[type="checkbox"] {
+    transform: scale(1.5);
 }
 
 /*popup*/
@@ -238,4 +276,13 @@
 #create {
     color: var(--secondary-font);
     background: linear-gradient(90deg,var(--header),var(--main-font));
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
