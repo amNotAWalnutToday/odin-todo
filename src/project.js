@@ -1,6 +1,7 @@
 import showProject from './projectDOM';
 import changeTab from './tabs';
 import eventAdder from './index';
+import removeForm from './removeForm';
 
 const project = (title,description,dueDate,priority) => {
 
@@ -23,6 +24,7 @@ const createProject = (() => {
         const _element = create(_value,'','','');
         showProject.pushToNav(_element);
         eventAdder.addE();
+        removeForm.remove();
     }
 
     const create = (title,description,dueDate,priority) => {

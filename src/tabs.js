@@ -22,10 +22,12 @@ const changeTab = (() => {
 
     const mapProject = () => {
         return createProject.projects.map(project => {
-            return `<div>
-                        <p>${project.title}</p>
-                        <p>${project.dueDate}</p>
-                        <p>${project.priority}</p>
+            return `<div class="card ${project.priority}">
+                        <h2>${project.title}</h2>
+                        <div>
+                            <p>Due: ${project.dueDate}</p>
+                            <p>${project.priority}</p>
+                        </div>
                     </div>`;
         });
     }

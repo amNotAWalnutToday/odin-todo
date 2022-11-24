@@ -6,6 +6,8 @@
     --secondary-font: #fafaf9;
     --button-c: #44403c;
 
+    --important: linear-gradient(180deg,rgb(231, 231, 97),rgb(255, 255, 165));
+
     --border: 2px solid #44403c;
 
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -34,7 +36,8 @@
 /*Header*/
 #header,
 #navbar,
-.form{
+.form,
+.card {
     box-shadow: 0px 0px 10px 2px var(--button-c);
     z-index: 1;
 }
@@ -86,6 +89,30 @@
 .inline-project {
     display:flex;
     justify-content: space-between;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: min(50%,750px);
+    height: 175px;
+    border: var(--border);
+    border-radius: 10px;
+    background: linear-gradient(var(--navbar),var(--page));
+}
+
+.card div, .card div div {
+    position: relative;
+    right: 5rem;
+    display: flex;
+    align-items: flex-start;
+}
+
+.card div div {
+    gap: 50rem;
 }
 
 /*popup*/
@@ -164,6 +191,22 @@
 
 .project > p {
     pointer-events: none;
+}
+
+.card h2 {
+    font-size: 40px;
+}
+
+.bold {
+    position: absolute;
+    bottom: -25px;
+    left: 15rem;
+    font-weight: bold;
+    font-size: 100px;
+}
+
+.important {
+    background: var(--important);
 }
 
 .form h1 {
