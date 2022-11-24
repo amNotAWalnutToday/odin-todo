@@ -35,9 +35,15 @@ const defaultProject = () => {
     showProject.pushToNav(_element);
 }
 
-defaultProject();
-eventAdder.addEvent();
-eventAdder.addE();
-showProject.displayProject(createProject.projects[0]);
+const loadUp = () => {
+    defaultProject();
+    eventAdder.addEvent();
+    eventAdder.addE();
+    changeTab.setButtons();
+    showProject.displayProject(createProject.projects[0]);
+    console.log(changeTab.tab);
+}
+
+loadUp();
 
 export default eventAdder

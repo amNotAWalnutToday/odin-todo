@@ -44,7 +44,6 @@ const showProject = (() => {
 
     //page display
     const displayProject = project => {
-        if(changeTab.tab === project.title) return;
         hideProject();
         changeTab.tab = project.title;
         console.log(changeTab.tab);

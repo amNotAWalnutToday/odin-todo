@@ -38,6 +38,7 @@ const addForm = (() => {
 
     const appendInput = () => {
         const _element = setAttribute('input','id','title');
+        _element.setAttribute('value','New Project');
         formContainer.appendChild(_element);
     }
 

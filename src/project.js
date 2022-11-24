@@ -19,6 +19,7 @@ const createProject = (() => {
 
     const getTitleInput = () => {
         const _value = document.querySelector('#title').value;
+        if (projects.filter(project => project.title === _value) != '') return;
         const _element = create(_value,'','','');
         showProject.pushToNav(_element);
         eventAdder.addE();
