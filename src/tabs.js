@@ -26,7 +26,6 @@ const changeTab = (() => {
                         <h2>${project.title}</h2>
                         <div>
                             <p>Due: ${project.dueDate}</p>
-                            <p>${project.priority}</p>
                         </div>
                     </div>`;
         });
@@ -34,6 +33,7 @@ const changeTab = (() => {
 
     const changeAll = (e) => {
         tab = 'all';
+        createProject.sortDate();
         console.log(tab);
 
         const _page = document.querySelector('#todo');

@@ -2,6 +2,7 @@ import showProject from './projectDOM';
 import changeTab from './tabs';
 import eventAdder from './index';
 import removeForm from './removeForm';
+import { compareAsc } from 'date-fns';
 
 const project = (title,description,dueDate,priority) => {
 
@@ -25,6 +26,15 @@ const createProject = (() => {
         showProject.pushToNav(_element);
         eventAdder.addE();
         removeForm.remove();
+    }
+
+    const sortDate = () => {
+        return projects.sort((a,b) => {
+            let date1 = a.dueDate.split("/");
+            let date2 = b.dueDate.split("/");
+            console.log({date1,date2})
+            return compareAsc(new Date(date1[2],date1[1]-(1),date1[0]),new Date(date2[2],date2[1]-(1),date2[0]));
+        })
     }
 
     const create = (title,description,dueDate,priority) => {
@@ -59,6 +69,7 @@ const createProject = (() => {
         returnIndex,
         projects,
         tasks,
+        sortDate,
     }
 })();
 
@@ -72,7 +83,7 @@ const removeProject = (() => {
     }
     
     return {
-        _removeProject
+        _removeProject,
     }
 })();
 

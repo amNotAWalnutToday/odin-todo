@@ -2,6 +2,7 @@ import createProject from './project';
 import {removeProject} from './project';
 import changeTab from './tabs';
 import eventAdder from './index';
+import { format } from 'date-fns'
 
 const showProject = (() => {
 
@@ -55,7 +56,7 @@ const showProject = (() => {
                             <div>
                                 <div>
                                     <label for="date">Due Date</label>
-                                    <input id="date" type="date" value="${project.dueDate}"/>
+                                    <input id="date" type="date" value="${project.dueDate.replace(/\//g,'-').split("-").reverse().join("-")}"/>
                                 </div>
                                 <div>
                                     <label for="priority">Important</label>
@@ -71,7 +72,11 @@ const showProject = (() => {
     const setDate = id => {
         const date = document.querySelector('[type="date"]');
         const index = createProject.returnIndex(id);
-        createProject.projects[index].dueDate = date.value;
+        const _dueDate = date.value.split("-");
+        const _date = format(new Date(_dueDate[0],_dueDate[1]-(1),_dueDate[2]),'dd/MM/yyyy');
+        console.log(_date); 
+
+        createProject.projects[index].dueDate = _date;
     }
 
     //change priority
