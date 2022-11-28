@@ -4,9 +4,11 @@ import eventAdder from './index';
 import removeForm from './removeForm';
 import { compareAsc } from 'date-fns';
 
-const project = (title,description,dueDate,priority) => {
+const project = (title,description,dueDate,priority,complete) => {
 
-    return { title, description, dueDate, priority }
+    dueDate = 'To Be Added';
+
+    return { title, description, dueDate, priority, complete };
 }
 
 const task = (project, task, dueDate, priority) => {
@@ -22,7 +24,7 @@ const createProject = (() => {
     const getTitleInput = () => {
         const _value = document.querySelector('#title').value;
         if (projects.filter(project => project.title === _value) != '') return;
-        const _element = create(_value,'','','');
+        const _element = create(_value,'','','','');
         showProject.pushToNav(_element);
         eventAdder.addE();
         removeForm.remove();
@@ -37,9 +39,9 @@ const createProject = (() => {
         })
     }
 
-    const create = (title,description,dueDate,priority) => {
+    const create = (title,description,dueDate,priority,complete) => {
 
-        const _project = project(title,description,dueDate,priority);
+        const _project = project(title,description,dueDate,priority,complete);
         projects.push(_project);
         console.log(projects);
         return _project; 

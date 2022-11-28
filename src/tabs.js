@@ -24,8 +24,12 @@ const changeTab = (() => {
         return createProject.projects.map(project => {
             return `<div class="card ${project.priority}">
                         <h2>${project.title}</h2>
-                        <div>
-                            <p>Due: ${project.dueDate}</p>
+                        <div class="info">
+                            <p><span class="bold">Due:</span> ${project.dueDate}</p>
+                            <div>
+                                <label for="${project.title}" class="bold">Complete?</label>
+                                <input id="${project.title}" type="checkbox">
+                            </div>
                         </div>
                     </div>`;
         });
@@ -42,6 +46,41 @@ const changeTab = (() => {
             <h1>All</h1>
         </div>`;
         _page.innerHTML += mapProject();
+
+        const checkbox = document.querySelectorAll('input')
+        checkbox.forEach(box => box.addEventListener('click',  setComplete));
+        console.log(checkbox)
+        setChecked();
+    }
+
+    //change completion
+    const setComplete = (e) => {
+        const check = document.querySelectorAll(`[type='checkbox']`);
+        
+        check.forEach(box => {
+            
+            console.log(box);
+            const index = createProject.returnIndex(box.id);
+            
+            box.checked
+                ? createProject.projects[index].complete = 'complete'
+                : createProject.projects[index].complete = '';
+        });
+
+        console.table(createProject.projects);
+    }
+
+    const setChecked = () => {
+        const check = document.querySelectorAll(`[type='checkbox']`);
+        
+        check.forEach(box => {
+            const index = createProject.returnIndex(box.id);
+            const complete = createProject.projects[index].complete;
+            
+            complete === 'complete'
+                ? box.checked = true
+                : box.checked = false;
+        });
     }
 
     return {

@@ -31,7 +31,7 @@ const eventAdder = (() => {
 })();
 
 const defaultProject = () => {
-    const _element = createProject.create('ToDo List','','','');
+    const _element = createProject.create('ToDo List','','','','');
     showProject.pushToNav(_element);
 }
 

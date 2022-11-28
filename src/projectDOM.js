@@ -64,7 +64,7 @@ const showProject = (() => {
                                 </div>
                             </div>`; 
         document.querySelector('#add-task').addEventListener('click',displayTask);
-        document.querySelector('[type=checkbox]').addEventListener('click', e => setImportant(project.title));
+        document.querySelector('#priority').addEventListener('click', e => setImportant(project.title));
         document.querySelector('[type="date"]').addEventListener('change', e => setDate(project.title));
         setChecked(project);
     }
@@ -81,7 +81,7 @@ const showProject = (() => {
 
     //change priority
     const setImportant = id => {
-        const check = document.querySelector(`[type='checkbox']`);
+        const check = document.querySelector(`#priority`);
         const index = createProject.returnIndex(id);
         console.log(index,id);
         check.checked 
@@ -90,7 +90,7 @@ const showProject = (() => {
     }
 
     const setChecked = id => {
-        const check = document.querySelector('[type="checkbox"]')
+        const check = document.querySelector('#priority')
         id.priority === 'important'
             ? check.checked = true
             : check.checked = false;
