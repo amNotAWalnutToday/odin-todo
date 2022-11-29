@@ -49,6 +49,14 @@
     background-color: var(--header);
 }
 
+.todo-title {
+    display: flex;
+    flex-direction: row;
+    place-items: center;
+    gap: 1rem;
+    padding: 0.5em 5rem;
+}
+
 /*navbar*/
 #navbar {
     grid-area: nav;
@@ -195,18 +203,58 @@
 }
 
 
-/*text*/
-#header > h1,
+/*text & img*/
+#header h1,
 #todo h1 {
     font-size: 60px;
 }
 
-#header > h1 {
-    padding: 0.1em 5rem;
+#header h1 {
     font-family: rubik marker hatch;
     color: var(--secondary-font);
     -webkit-text-stroke: 2.5px var(--navbar);
 }
+
+/*logo*/
+img {
+    width: 75px;
+    height: 50px;
+}
+
+/*navbar svgs*/
+#all svg, #today svg, #this-week svg, #important svg, #history svg {
+    position: absolute;
+}
+
+#all svg {
+    transform: scale(0.5) translate(-135px,-25px) !important;
+}
+
+#today svg {
+    transform: scale(0.5) translate(-110px,-25px) !important;
+}
+
+#this-week svg{
+    transform: scale(0.5) translate(-75px,-25px) !important;
+}
+
+#important svg {
+    transform: scale(0.5) translate(-85px,-25px) !important;
+}
+
+#history svg {
+    transform: scale(0.5) translate(-105px,-25px) !important;
+}
+
+/*todo svg*/
+h1 img {
+    height: 4.5rem;
+    transform: translateY(15px);
+}
+
+
+
+
 
 #create-project *,
 #todo p,
@@ -214,7 +262,7 @@
     font-size: 20px;
 }
 
-.project > p {
+.project > p, svg {
     pointer-events: none;
 }
 
@@ -268,6 +316,7 @@
 #nav > button:focus-within,
 .selected {
     color: var(--secondary-font) !important;
+    fill: var(--secondary-font) !important;
     background-color: var(--button-c) !important;
 }
 

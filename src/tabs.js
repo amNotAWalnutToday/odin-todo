@@ -1,5 +1,6 @@
 import { isPast, isToday, isThisWeek, format } from "date-fns";
 import createProject, { removeProject } from "./project";
+import { allIcon, todayIcon, calendarIcon, priorityIcon, historyIcon } from "./svgs";
 
 const changeTab = (() => {
     
@@ -40,7 +41,7 @@ const changeTab = (() => {
                 createProject.history.push(createProject.projects[index]);
                 const historyIndex = createProject.returnHistory(box.id);
                 createProject.history[historyIndex].dueDate = format(new Date(), 'dd/MM/yyyy');
-                
+
                 createProject.delButton(box.id);
                 createProject.projects[index].complete = 'complete'
                 removeProject._removeProject(box.id);
@@ -135,7 +136,7 @@ const changeTab = (() => {
         const _page = document.querySelector('#todo');
         _page.innerHTML = 
         `<div>
-            <h1>All</h1>
+            <h1>${allIcon} All</h1>
         </div>`;
         _page.innerHTML += mapProject('none');
 
@@ -151,7 +152,7 @@ const changeTab = (() => {
         const _page = document.querySelector('#todo');
         _page.innerHTML =
         `<div>
-            <h1>Today</h1>
+            <h1>${todayIcon}Today</h1>
         </div>`; 
         _page.innerHTML += mapProject('today');
 
@@ -168,7 +169,7 @@ const changeTab = (() => {
         const _page = document.querySelector('#todo');
         _page.innerHTML = 
         `<div>
-            <h1>This Week</h1>    
+            <h1>${calendarIcon}This Week</h1>    
         </div>`;
         _page.innerHTML += mapProject('week');
 
@@ -185,7 +186,7 @@ const changeTab = (() => {
         const _page = document.querySelector('#todo');
         _page.innerHTML = 
         `<div>
-            <h1>Important</h1>    
+            <h1>${priorityIcon}Important</h1>    
         </div>`;
         _page.innerHTML += mapProject('priority');
 
@@ -203,10 +204,11 @@ const changeTab = (() => {
         const _page = document.querySelector('#todo');
         _page.innerHTML = 
         `<div>
-            <h1>History</h1>    
+            <h1>${historyIcon}History</h1>    
         </div>`;
         _page.innerHTML += mapHistory();
         createProject.reverseHistory.splice(0);
+        console.log(allIcon);
     }
 
     return {

@@ -4,6 +4,7 @@ import addForm from './addForm';
 import removeForm from './removeForm';
 import showProject from './projectDOM';
 import changeTab from './tabs';
+import { allIcon } from './svgs';
 
 const eventAdder = (() => {
     const button = document.querySelector('#add-button');
