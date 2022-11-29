@@ -74,7 +74,6 @@ const showProject = (() => {
         const index = createProject.returnIndex(id);
         const _dueDate = date.value.split("-");
         const _date = format(new Date(_dueDate[0],_dueDate[1]-(1),_dueDate[2]),'dd/MM/yyyy');
-        console.log(_date); 
 
         createProject.projects[index].dueDate = _date;
     }
@@ -83,7 +82,7 @@ const showProject = (() => {
     const setImportant = id => {
         const check = document.querySelector(`#priority`);
         const index = createProject.returnIndex(id);
-        console.log(index,id);
+        
         check.checked 
             ? createProject.projects[index].priority = 'important'
             : createProject.projects[index].priority = '';

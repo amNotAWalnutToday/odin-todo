@@ -7,6 +7,7 @@
     --button-c: #44403c;
 
     --important: linear-gradient(180deg,rgb(231, 231, 97),rgb(255, 255, 165));
+    --complete: linear-gradient(180deg, mediumspringgreen, springgreen);
 
     --border: 2px solid #44403c;
 
@@ -145,6 +146,10 @@
     background: var(--important);
 }
 
+.complete {
+    background: var(--complete);
+}
+
 @media (max-width: 1120px){
     .info {
         flex-direction: column;
@@ -211,8 +216,6 @@
 .bold {
     font-weight: bold;
 }
-
-
 
 .form h1 {
     width: 100%;

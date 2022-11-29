@@ -7,7 +7,6 @@ const removeForm = (() => {
 
     const activateButtons = () => {
         const buttons = document.querySelectorAll('.button');
-        console.log(buttons);
         buttons.forEach(button => {
             button.disabled = false;
         })

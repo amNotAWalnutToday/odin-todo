@@ -20,6 +20,8 @@ const createProject = (() => {
 
     let projects = [];
     let tasks = [];
+    let history = [];
+    let reverseHistory = [];
 
     const getTitleInput = () => {
         const _value = document.querySelector('#title').value;
@@ -34,9 +36,18 @@ const createProject = (() => {
         return projects.sort((a,b) => {
             let date1 = a.dueDate.split("/");
             let date2 = b.dueDate.split("/");
-            console.log({date1,date2})
+    
             return compareAsc(new Date(date1[2],date1[1]-(1),date1[0]),new Date(date2[2],date2[1]-(1),date2[0]));
         })
+    }
+
+    const sortHistory = () => {
+        const _history = history.slice(0);
+        _history.reverse();
+        for(let i = 0; i < history.length; i++) {
+            reverseHistory.push(_history[i]);
+        }
+        return _history;
     }
 
     const create = (title,description,dueDate,priority,complete) => {
@@ -65,13 +76,23 @@ const createProject = (() => {
         }
     }
 
+    const returnHistory = project => {
+        for(let i = 0; i < history.length; i++){
+            if(project === history[i].title) return i;
+        }
+    }
+
     return {
         create,
         getTitleInput,
         returnIndex,
+        returnHistory,
         projects,
         tasks,
+        history,
+        reverseHistory,
         sortDate,
+        sortHistory,
     }
 })();
 

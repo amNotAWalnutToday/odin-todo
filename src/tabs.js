@@ -1,5 +1,4 @@
-import { isToday } from "date-fns";
-import { isThisWeek } from "date-fns";
+import { isToday, isThisWeek, format } from "date-fns";
 import createProject from "./project";
 
 const changeTab = (() => {
@@ -18,12 +17,11 @@ const changeTab = (() => {
         const _important = getButtons('#important');
         const _history = getButtons('#history');
 
-        
-
         _all.addEventListener('click', changeAll);
         _today.addEventListener('click', changeToday);
         _thisWeek.addEventListener('click', changeWeek);
         _important.addEventListener('click', changeImportant);
+        _history.addEventListener('click', changeHistory);
     }
 
     //change completion
@@ -36,14 +34,20 @@ const changeTab = (() => {
         const check = document.querySelectorAll(`[type='checkbox']`);
         
         check.forEach(box => {
-            console.log(box);
             const index = createProject.returnIndex(box.id);
             
+            if(box.checked){
+                createProject.history.push(createProject.projects[index]);
+                const historyIndex = createProject.returnHistory(box.id);
+                createProject.history[historyIndex].dueDate = format(new Date(), 'dd/MM/yyyy');
+                console.log(createProject.history);
+            }
+
             box.checked
                 ? createProject.projects[index].complete = 'complete'
                 : createProject.projects[index].complete = '';
         });
-
+        changeAll();
         console.table(createProject.projects);
     }
 
@@ -79,12 +83,12 @@ const changeTab = (() => {
     const mapProject = (filter) => {
         const _projects = createProject.projects.filter(project => {
             
+            if (project.complete != '') return;
             if (checkToday(project.dueDate) && filter === 'today') return project;
             if (checkWeek(project.dueDate) && filter === 'week') return project;
             if (project.priority === 'important' && filter === 'priority') return project;
             if (filter === 'none') return project;
         })
-
 
         return _projects.map(project => {
             return `<div class="card ${project.priority}">
@@ -97,6 +101,28 @@ const changeTab = (() => {
                             </div>
                         </div>
                     </div>`;
+        });
+    }
+
+    const mapHistory = () => {
+        return createProject.reverseHistory.map(project => {
+            if(project.complete === 'complete'){
+                return `<div class="card ${project.complete}">
+                            <h2>${project.title}</h2>
+                            <div class="info">
+                                <p><span class="bold">Finished: </span> ${project.dueDate}</p>
+                                <p><span class="bold">Complete! </span></p>
+                            </div>
+                        </div>`;
+            }else {
+                return `<div class="card ${project.complete}">
+                            <h2>${project.title}</h2>
+                            <div class="info">
+                                <p><span class="bold">Finished: </span> ${project.dueDate}</p>
+                                <p><span class="bold">Failed! </span></p>
+                            </div>
+                        </div>`;
+            }
         });
     }
     
@@ -162,6 +188,21 @@ const changeTab = (() => {
 
         getChecked();
         setChecked();
+    }
+
+    const changeHistory = () => {
+        if(tab === 'history') return;
+        tab = 'history';
+        createProject.sortHistory();
+        console.log(tab);
+
+        const _page = document.querySelector('#todo');
+        _page.innerHTML = 
+        `<div>
+            <h1>History</h1>    
+        </div>`;
+        _page.innerHTML += mapHistory();
+        createProject.reverseHistory.splice(0);
     }
 
     return {
