@@ -23,6 +23,7 @@ const changeTab = (() => {
         _all.addEventListener('click', changeAll);
         _today.addEventListener('click', changeToday);
         _thisWeek.addEventListener('click', changeWeek);
+        _important.addEventListener('click', changeImportant);
     }
 
     //change completion
@@ -80,6 +81,7 @@ const changeTab = (() => {
             
             if (checkToday(project.dueDate) && filter === 'today') return project;
             if (checkWeek(project.dueDate) && filter === 'week') return project;
+            if (project.priority === 'important' && filter === 'priority') return project;
             if (filter === 'none') return project;
         })
 
@@ -141,6 +143,22 @@ const changeTab = (() => {
             <h1>This Week</h1>    
         </div>`;
         _page.innerHTML += mapProject('week');
+
+        getChecked();
+        setChecked();
+    }
+
+    const changeImportant = () => {
+        tab = 'important';
+        createProject.sortDate();
+        console.log(tab);
+
+        const _page = document.querySelector('#todo');
+        _page.innerHTML = 
+        `<div>
+            <h1>Important</h1>    
+        </div>`;
+        _page.innerHTML += mapProject('priority');
 
         getChecked();
         setChecked();

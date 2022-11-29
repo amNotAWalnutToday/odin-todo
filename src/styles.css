@@ -141,6 +141,10 @@
     white-space: nowrap;
 }
 
+.important {
+    background: var(--important);
+}
+
 @media (max-width: 1120px){
     .info {
         flex-direction: column;
@@ -208,9 +212,7 @@
     font-weight: bold;
 }
 
-.important {
-    background: var(--important);
-}
+
 
 .form h1 {
     width: 100%;
