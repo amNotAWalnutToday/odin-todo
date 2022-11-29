@@ -2,7 +2,7 @@ import showProject from './projectDOM';
 import changeTab from './tabs';
 import eventAdder from './index';
 import removeForm from './removeForm';
-import { compareAsc } from 'date-fns';
+import { compareAsc, isPast } from 'date-fns';
 
 const project = (title,description,dueDate,priority,complete) => {
 
@@ -36,7 +36,7 @@ const createProject = (() => {
         return projects.sort((a,b) => {
             let date1 = a.dueDate.split("/");
             let date2 = b.dueDate.split("/");
-    
+            
             return compareAsc(new Date(date1[2],date1[1]-(1),date1[0]),new Date(date2[2],date2[1]-(1),date2[0]));
         })
     }
@@ -48,6 +48,24 @@ const createProject = (() => {
             reverseHistory.push(_history[i]);
         }
         return _history;
+    }
+
+    const checkPast = (date) => {
+        const _date = date.split('/').reverse();
+        const _newDate = new Date(_date[0],_date[1]-(1),_date[2]+(1));
+
+        return isPast(_newDate);
+    }
+
+    const pushHistory = () => {
+        const _projects = projects.filter(project => {
+            if(checkPast(project.dueDate)) return project
+        })
+        _projects.forEach(project => {
+            project.complete = 'failed';
+            history.push(project);
+            removeProject._removeProject(project.title);
+        })
     }
 
     const create = (title,description,dueDate,priority,complete) => {
@@ -93,6 +111,7 @@ const createProject = (() => {
         reverseHistory,
         sortDate,
         sortHistory,
+        pushHistory,
     }
 })();
 

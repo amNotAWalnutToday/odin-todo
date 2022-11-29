@@ -1,4 +1,4 @@
-import { isToday, isThisWeek, format } from "date-fns";
+import { isPast, isToday, isThisWeek, format } from "date-fns";
 import createProject from "./project";
 
 const changeTab = (() => {
@@ -192,6 +192,7 @@ const changeTab = (() => {
 
     const changeHistory = () => {
         if(tab === 'history') return;
+        createProject.pushHistory();
         tab = 'history';
         createProject.sortHistory();
         console.log(tab);
