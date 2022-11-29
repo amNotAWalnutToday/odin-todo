@@ -1,5 +1,5 @@
 import { isPast, isToday, isThisWeek, format } from "date-fns";
-import createProject from "./project";
+import createProject, { removeProject } from "./project";
 
 const changeTab = (() => {
     
@@ -40,12 +40,11 @@ const changeTab = (() => {
                 createProject.history.push(createProject.projects[index]);
                 const historyIndex = createProject.returnHistory(box.id);
                 createProject.history[historyIndex].dueDate = format(new Date(), 'dd/MM/yyyy');
-                console.log(createProject.history);
-            }
-
-            box.checked
-                ? createProject.projects[index].complete = 'complete'
-                : createProject.projects[index].complete = '';
+                
+                createProject.delButton(box.id);
+                createProject.projects[index].complete = 'complete'
+                removeProject._removeProject(box.id);
+            } else createProject.projects[index].complete = '';
         });
         changeAll();
         console.table(createProject.projects);
@@ -128,6 +127,7 @@ const changeTab = (() => {
     
     //tab contents
     const changeAll = (e) => {
+        createProject.pushHistory();
         tab = 'all';
         createProject.sortDate();
         console.log(tab);
@@ -144,6 +144,7 @@ const changeTab = (() => {
     }
 
     const changeToday = (e) => {
+        createProject.pushHistory();
         tab = 'today';
         console.log(tab);
 
@@ -159,6 +160,7 @@ const changeTab = (() => {
     }
 
     const changeWeek = () => {
+        createProject.pushHistory();
         tab = 'week';
         createProject.sortDate();
         console.log(tab);
@@ -175,6 +177,7 @@ const changeTab = (() => {
     }
 
     const changeImportant = () => {
+        createProject.pushHistory();
         tab = 'important';
         createProject.sortDate();
         console.log(tab);

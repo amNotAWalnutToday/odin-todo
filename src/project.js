@@ -2,7 +2,8 @@ import showProject from './projectDOM';
 import changeTab from './tabs';
 import eventAdder from './index';
 import removeForm from './removeForm';
-import { compareAsc, isPast } from 'date-fns';
+import { compareAsc, endOfDay, endOfToday, endOfYesterday, isAfter, isBefore, isPast } from 'date-fns';
+import endOfTomorrow from 'date-fns/endOfTomorrow';
 
 const project = (title,description,dueDate,priority,complete) => {
 
@@ -52,20 +53,31 @@ const createProject = (() => {
 
     const checkPast = (date) => {
         const _date = date.split('/').reverse();
-        const _newDate = new Date(_date[0],_date[1]-(1),_date[2]+(1));
+        const _newDate = new Date(_date[0],_date[1]-(1),_date[2]);
+        const _today = endOfYesterday();
 
-        return isPast(_newDate);
+        console.log(_newDate);
+        return isBefore(_newDate, _today);
     }
 
     const pushHistory = () => {
         const _projects = projects.filter(project => {
-            if(checkPast(project.dueDate)) return project
+           
+            if(checkPast(project.dueDate)) return project;
         })
+
+        console.log(_projects);
+        
         _projects.forEach(project => {
             project.complete = 'failed';
             history.push(project);
+            delButton(project.title);
             removeProject._removeProject(project.title);
         })
+    }
+
+    const delButton = (project) => {
+        document.querySelector(`[id="${project}"]`).remove();
     }
 
     const create = (title,description,dueDate,priority,complete) => {
@@ -112,6 +124,7 @@ const createProject = (() => {
         sortDate,
         sortHistory,
         pushHistory,
+        delButton,
     }
 })();
 

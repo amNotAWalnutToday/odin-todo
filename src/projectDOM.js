@@ -82,7 +82,7 @@ const showProject = (() => {
     const setImportant = id => {
         const check = document.querySelector(`#priority`);
         const index = createProject.returnIndex(id);
-        
+
         check.checked 
             ? createProject.projects[index].priority = 'important'
             : createProject.projects[index].priority = '';
