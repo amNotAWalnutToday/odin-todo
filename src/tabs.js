@@ -1,4 +1,5 @@
 import { isToday } from "date-fns";
+import { isThisWeek } from "date-fns";
 import createProject from "./project";
 
 const changeTab = (() => {
@@ -21,6 +22,7 @@ const changeTab = (() => {
 
         _all.addEventListener('click', changeAll);
         _today.addEventListener('click', changeToday);
+        _thisWeek.addEventListener('click', changeWeek);
     }
 
     //change completion
@@ -56,6 +58,7 @@ const changeTab = (() => {
                 : box.checked = false;
         });
     }
+
     //filters
     const checkToday = (date) => {
         const _date = date.split('/').reverse();
@@ -63,11 +66,20 @@ const changeTab = (() => {
 
         return isToday(_newDate);
     }
+
+    const checkWeek = (date) => {
+        const _date = date.split('/').reverse();
+        const _newDate = new Date(_date[0],_date[1]-(1),_date[2]);
+
+        return isThisWeek(_newDate, { weekStartsOn: 1 });
+    }
+
     //maps
     const mapProject = (filter) => {
         const _projects = createProject.projects.filter(project => {
             
             if (checkToday(project.dueDate) && filter === 'today') return project;
+            if (checkWeek(project.dueDate) && filter === 'week') return project;
             if (filter === 'none') return project;
         })
 
@@ -113,6 +125,22 @@ const changeTab = (() => {
             <h1>Today</h1>
         </div>`; 
         _page.innerHTML += mapProject('today');
+
+        getChecked();
+        setChecked();
+    }
+
+    const changeWeek = () => {
+        tab = 'week';
+        createProject.sortDate();
+        console.log(tab);
+
+        const _page = document.querySelector('#todo');
+        _page.innerHTML = 
+        `<div>
+            <h1>This Week</h1>    
+        </div>`;
+        _page.innerHTML += mapProject('week');
 
         getChecked();
         setChecked();
