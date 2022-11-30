@@ -26,9 +26,10 @@ const createProject = (() => {
     let popupForm = false;
 
     const getTitleInput = () => {
-        const _value = document.querySelector('#title').value;
-        if (projects.filter(project => project.title === _value) != '') return;
-        const _element = create(_value,'','','','');
+        const _titleValue = document.querySelector('#title').value;
+        const _descriptionValue = document.querySelector('#description').value;
+        if (projects.filter(project => project.title === _titleValue) != '') return;
+        const _element = create(_titleValue,_descriptionValue,'','','');
         showProject.pushToNav(_element);
         eventAdder.addE();
         removeForm.remove();

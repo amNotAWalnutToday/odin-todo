@@ -43,6 +43,19 @@ const addForm = (() => {
         formContainer.appendChild(_element);
     }
 
+    const appendDescriptionLabel = name => {
+        const _element = setAttribute('label','for','description')
+        _element.textContent = name;
+        formContainer.appendChild(_element);
+    }
+
+    const appendTextArea = () => {
+        const _element = setAttribute('textarea','id','description');
+        _element.setAttribute('rows','3');
+        _element.setAttribute('placeholder','Enter a Description');
+        formContainer.appendChild(_element)
+    }
+
     const appendButtonContainer = () => {
         const _element = setAttribute('div','class','formButtons')
         formContainer.appendChild(_element);
@@ -87,10 +100,12 @@ const addForm = (() => {
     const showForm = () => {
         if (createProject.popupForm) return;
         createProject.popupForm = true;
+        appendTextArea();
+        appendDescriptionLabel('Description');
         appendInput();
         appendLabel('Title');
         appendHeader('Add Project');
-        appendButtonContainer();
+        
         fadeContainer();
         formContainer.classList.remove('hide');
         showProject.hideProject();

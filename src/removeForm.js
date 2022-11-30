@@ -22,7 +22,7 @@ const removeForm = (() => {
     const remove = () => {
         const form = document.querySelector('.form');
         form.classList.add('hide');
-        for(let i = 4; i > 0; i--){
+        for(let i = 5; i > 0; i--){
             form.removeChild(form.lastChild);
         }
         unfadeContainer();

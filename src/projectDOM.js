@@ -61,8 +61,9 @@ const showProject = (() => {
                                 <div>
                                     <label for="priority">Important</label>
                                     <input id="priority" type="checkbox"/>
-                                </div>
-                            </div>`; 
+                                </div>       
+                            </div>
+                            <p class="description">${project.description}</p>`; 
         document.querySelector('#add-task').addEventListener('click',displayTask);
         document.querySelector('#priority').addEventListener('click', e => setImportant(project.title));
         document.querySelector('[type="date"]').addEventListener('change', e => setDate(project.title));

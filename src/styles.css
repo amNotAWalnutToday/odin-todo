@@ -189,7 +189,7 @@
     flex-direction: column-reverse;
     justify-content: flex-end;
     width: calc(250px + 10vw);
-    height: 250px;
+    height: 275px;  
     border: var(--border);
     background-color: var(--page);
 }
@@ -202,8 +202,8 @@
     opacity: 0.5;
 }
 
-
 /*text & img*/
+/*text*/
 #header h1,
 #todo h1 {
     font-size: 60px;
@@ -215,8 +215,45 @@
     -webkit-text-stroke: 2.5px var(--navbar);
 }
 
+
+#create-project *,
+#todo p,
+#todo label {
+    font-size: 20px;
+}
+
+.description {
+    margin-top: 2.5rem;
+    padding: 0 10rem;
+    text-align: center;
+}
+
+.project > p, svg {
+    pointer-events: none;
+}
+
+.card h2 {
+    font-size: 40px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.form h1 {
+    width: 100%;
+    color: var(--secondary-font);
+    text-align: center;
+    transform: translateY(0);
+}
+
+.form label {
+    margin: 0 3.3rem;
+}
+
+/*img*/
 /*logo*/
-img {
+.todo-title img {
     width: 75px;
     height: 50px;
 }
@@ -250,40 +287,6 @@ img {
 h1 img {
     height: 4.5rem;
     transform: translateY(15px);
-}
-
-
-
-
-
-#create-project *,
-#todo p,
-#todo label {
-    font-size: 20px;
-}
-
-.project > p, svg {
-    pointer-events: none;
-}
-
-.card h2 {
-    font-size: 40px;
-}
-
-.bold {
-    font-weight: bold;
-}
-
-.form h1 {
-    width: 100%;
-    color: var(--secondary-font);
-    text-align: center;
-    transform: translateY(-16px);
-}
-
-.form label,
-.form input{
-    margin: 0 3.5rem;
 }
 
 /*components*/
@@ -361,17 +364,25 @@ h1 img {
 }
 
 /*popup*/
-#popup input {
+#popup input,
+#description {
+    position: relative;
+    top: -10px;
     width: 75%;
+    margin: 0 auto;
 }
 
 .form div {
     position:relative;
-    top: 50px;
+    top: 10px;
     display:flex;
     justify-content: flex-end;
     gap: 1rem;
     margin: 0 1rem;
+}
+
+#description {
+    resize: none;
 }
 
 #popup button {
