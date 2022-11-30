@@ -4,6 +4,7 @@ import showProject from './projectDOM';
 import changeTab from './tabs';
 
 const addForm = (() => {
+
     const createElement = element => {
         const _element = document.createElement(element);
         return _element;
@@ -84,6 +85,8 @@ const addForm = (() => {
     }
     
     const showForm = () => {
+        if (createProject.popupForm) return;
+        createProject.popupForm = true;
         appendInput();
         appendLabel('Title');
         appendHeader('Add Project');

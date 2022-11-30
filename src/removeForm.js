@@ -1,3 +1,5 @@
+import createProject from "./project";
+
 const removeForm = (() => {
 
     const unfadeContainer = () => {
@@ -25,6 +27,7 @@ const removeForm = (() => {
         }
         unfadeContainer();
         activateButtons();
+        createProject.popupForm = false;
     }
 
     return {

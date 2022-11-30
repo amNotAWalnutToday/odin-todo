@@ -23,6 +23,7 @@ const createProject = (() => {
     let tasks = [];
     let history = [];
     let reverseHistory = [];
+    let popupForm = false;
 
     const getTitleInput = () => {
         const _value = document.querySelector('#title').value;
@@ -125,6 +126,7 @@ const createProject = (() => {
         sortHistory,
         pushHistory,
         delButton,
+        popupForm,
     }
 })();
 

@@ -1,4 +1,4 @@
-import { isPast, isToday, isThisWeek, format } from "date-fns";
+import { isToday, isThisWeek, format } from "date-fns";
 import createProject, { removeProject } from "./project";
 import { allIcon, todayIcon, calendarIcon, priorityIcon, historyIcon } from "./svgs";
 
