@@ -47,4 +47,4 @@ const loadUp = () => {
 
 loadUp();
 
-export default eventAdder
+export default eventAdder;

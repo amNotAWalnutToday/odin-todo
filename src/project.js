@@ -58,17 +58,13 @@ const createProject = (() => {
         const _newDate = new Date(_date[0],_date[1]-(1),_date[2]);
         const _today = endOfYesterday();
 
-        console.log(_newDate);
         return isBefore(_newDate, _today);
     }
 
     const pushHistory = () => {
         const _projects = projects.filter(project => {
-           
             if(checkPast(project.dueDate)) return project;
         })
-
-        console.log(_projects);
         
         _projects.forEach(project => {
             project.complete = 'failed';
@@ -135,7 +131,6 @@ const removeProject = (() => {
     
     const _removeProject = project => { 
         for(let i = 0; i < createProject.projects.length; i++){
-            console.log({project},createProject.projects[i]);
             if(project === createProject.projects[i].title) createProject.projects.splice(i,1);
         }
     }

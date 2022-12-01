@@ -207,8 +207,8 @@ const changeTab = (() => {
             <h1>${historyIcon}History</h1>    
         </div>`;
         _page.innerHTML += mapHistory();
+
         createProject.reverseHistory.splice(0);
-        console.log(allIcon);
     }
 
     return {
