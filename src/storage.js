@@ -1,7 +1,6 @@
 import createProject from './project';
 import showProject from './projectDOM';
 import changeTab from './tabs';
-import {project} from './project';
 
 const storage = (() => {
 
@@ -47,9 +46,7 @@ const storage = (() => {
             localStorage.removeItem('history')
             createProject.history = [];
             createProject.reverseHistory = [];
-            changeTab.tab = 'a'
             changeTab.changeHistory();
-            console.log(changeTab.tab)
         }
     }
 

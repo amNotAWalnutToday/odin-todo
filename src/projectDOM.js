@@ -1,7 +1,6 @@
 import createProject from './project';
-import {removeProject} from './project';
+import { removeProject } from './project';
 import changeTab from './tabs';
-import eventAdder from './index';
 import { format } from 'date-fns'
 
 const showProject = (() => {

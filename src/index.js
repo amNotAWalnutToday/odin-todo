@@ -1,7 +1,6 @@
 import './styles.css';
 import createProject from './project';
 import addForm from './addForm';
-import removeForm from './removeForm';
 import showProject from './projectDOM';
 import changeTab from './tabs';
 import storage from './storage';
@@ -41,12 +40,16 @@ const loadUp = () => {
     if(!localStorage.getItem('projects')){
         defaultProject();
     }
+
     storage.getHistory();
     storage.getProjects();
+
     eventAdder.addEvent();
     eventAdder.addE();
+    
     changeTab.setButtons();
     console.log(changeTab.tab);
+
     if(createProject.projects.length > 0){
         showProject.displayProject(createProject.projects[0]);
     }
