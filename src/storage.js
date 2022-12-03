@@ -22,12 +22,6 @@ const storage = (() => {
         }
     }
 
-    const checkProjects = () => {
-        if(localStorage.getItem('projects') === '[]'){
-            localStorage.removeItem('projects');
-        }
-    }
-
     const storeHistory = () => {
         let _history = [];
         createProject.history.forEach(value => _history.push(value));
@@ -48,11 +42,23 @@ const storage = (() => {
         }
     }
 
+    const clearHistory = () => {
+        if(localStorage.getItem('history')){
+            localStorage.removeItem('history')
+            createProject.history = [];
+            createProject.reverseHistory = [];
+            changeTab.tab = 'a'
+            changeTab.changeHistory();
+            console.log(changeTab.tab)
+        }
+    }
+
     return {
         storeProjects,
         getProjects,
         storeHistory,
         getHistory,
+        clearHistory,
     }
 })();
 

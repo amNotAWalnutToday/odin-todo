@@ -289,6 +289,13 @@ h1 img {
     transform: translateY(15px);
 }
 
+button img {
+    height: 1.5rem;
+    width: 1.5rem;
+    transform: translate(-10px,-12px);
+    filter: invert();
+}
+
 /*components*/
 /*navbar*/
 #nav > button,
@@ -310,7 +317,8 @@ h1 img {
 .add:enabled:hover,
 .project.button:hover,
 .project > button:hover,
-#popup button:hover {
+#popup button:hover,
+#clear-history:hover {
     outline: var(--border);
     filter: brightness(1.2);
     cursor: pointer;
@@ -327,7 +335,8 @@ h1 img {
 
 /*projects*/
 .add,
-.nav-project button {
+.nav-project button,
+#clear-history {
     padding: 0 6px;
     border: none;
     border-radius: 50%;
@@ -344,10 +353,17 @@ h1 img {
     background-color: var(--button-c);
 }
 
-.nav-project button {
+.nav-project button,
+#clear-history {
     background-color: crimson;
+    border: var(--border) !important;
 }
 
+#clear-history {
+    padding: 1rem;
+    height: 4.5rem;
+    width: 2.5rem;
+}
 /*ToDo list Page*/
 #todo > div:first-child > button {
     height: 20px;

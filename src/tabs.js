@@ -1,7 +1,7 @@
 import { isToday, isThisWeek, format } from "date-fns";
 import createProject, { removeProject } from "./project";
 import storage from "./storage";
-import { allIcon, todayIcon, calendarIcon, priorityIcon, historyIcon } from "./svgs";
+import { allIcon, todayIcon, calendarIcon, priorityIcon, historyIcon, deleteIcon } from "./svgs";
 
 const changeTab = (() => {
     
@@ -24,6 +24,12 @@ const changeTab = (() => {
         _thisWeek.addEventListener('click', changeWeek);
         _important.addEventListener('click', changeImportant);
         _history.addEventListener('click', changeHistory);
+    }
+
+    const setClearHistory = () => {
+        const _clearHistory = getButtons('#clear-history')
+
+        _clearHistory.addEventListener('dblclick', storage.clearHistory)
     }
 
     //change completion
@@ -196,7 +202,7 @@ const changeTab = (() => {
     }
 
     const changeHistory = () => {
-        if(tab === 'history') return;
+        
         createProject.pushHistory();
         tab = 'history';
         createProject.sortHistory();
@@ -205,9 +211,12 @@ const changeTab = (() => {
         const _page = document.querySelector('#todo');
         _page.innerHTML = 
         `<div>
-            <h1>${historyIcon}History</h1>    
+            <h1>${historyIcon}History</h1>
+            <button id="clear-history">${deleteIcon}</button>    
         </div>`;
         _page.innerHTML += mapHistory();
+
+        setClearHistory();
 
         createProject.reverseHistory.splice(0);
     }
@@ -215,6 +224,7 @@ const changeTab = (() => {
     return {
         tab,
         setButtons,
+        changeHistory,
     }
 })();
 
