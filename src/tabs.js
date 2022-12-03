@@ -1,5 +1,6 @@
 import { isToday, isThisWeek, format } from "date-fns";
 import createProject, { removeProject } from "./project";
+import storage from "./storage";
 import { allIcon, todayIcon, calendarIcon, priorityIcon, historyIcon } from "./svgs";
 
 const changeTab = (() => {

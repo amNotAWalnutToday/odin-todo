@@ -4,6 +4,7 @@ import eventAdder from './index';
 import removeForm from './removeForm';
 import { compareAsc, endOfDay, endOfToday, endOfYesterday, isAfter, isBefore, isPast } from 'date-fns';
 import endOfTomorrow from 'date-fns/endOfTomorrow';
+import storage from './storage';
 
 const project = (title,description,dueDate,priority,complete) => {
 
@@ -33,6 +34,7 @@ const createProject = (() => {
         showProject.pushToNav(_element);
         eventAdder.addE();
         removeForm.remove();
+        
     }
 
     const sortDate = () => {
@@ -142,3 +144,4 @@ const removeProject = (() => {
 
 export default createProject;
 export {removeProject};
+export {project};

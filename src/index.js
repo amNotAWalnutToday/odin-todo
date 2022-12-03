@@ -4,6 +4,7 @@ import addForm from './addForm';
 import removeForm from './removeForm';
 import showProject from './projectDOM';
 import changeTab from './tabs';
+import storage from './storage';
 
 const eventAdder = (() => {
 
@@ -36,14 +37,28 @@ const defaultProject = () => {
     showProject.pushToNav(_element);
 }
 
-const loadUp = () => {
-    defaultProject();
+const loadUp = () => {    
+    if(!localStorage.getItem('projects')){
+        defaultProject();
+    }
+    storage.getHistory();
+    storage.getProjects();
     eventAdder.addEvent();
     eventAdder.addE();
     changeTab.setButtons();
-    showProject.displayProject(createProject.projects[0]);
     console.log(changeTab.tab);
+    if(createProject.projects.length > 0){
+        showProject.displayProject(createProject.projects[0]);
+    }
+    
 }
+
+const store = () => {
+    storage.storeProjects();
+    storage.storeHistory();
+}
+
+window.addEventListener('beforeunload' , store);
 
 loadUp();
 
