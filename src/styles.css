@@ -310,15 +310,15 @@ button img {
     border-radius: 5px;
     box-sizing: content-box;
     background-color: var(--page);
+    transition-property: background-color;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-out;
 }
 
 #nav > button:enabled:hover,
 #nav > button:focus,
-.add:enabled:hover,
 .project.button:hover,
-.project > button:hover,
-#popup button:hover,
-#clear-history:hover {
+#popup button:hover {
     outline: var(--border);
     filter: brightness(1.2);
     cursor: pointer;
@@ -331,8 +331,6 @@ button img {
     background-color: var(--button-c) !important;
 }
 
-
-
 /*projects*/
 .add,
 .nav-project button,
@@ -341,12 +339,15 @@ button img {
     border: none;
     border-radius: 50%;
     color: var(--secondary-font);
+    transition: transform 0.3s ease-out;
 }
 
-.add:hover,
-.nav-project button:hover {
-    animation: spin 3s infinite alternate;
-    transition: ease;
+.add:enabled:hover,
+.project > button:hover,
+#clear-history:hover {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+    cursor: pointer;
 }
 
 .add {
@@ -413,14 +414,4 @@ button img {
 #create {
     color: var(--secondary-font);
     background: linear-gradient(90deg,var(--header),var(--main-font));
-}
-
-/*animations*/
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
 }
