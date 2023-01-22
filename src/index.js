@@ -1,9 +1,16 @@
 import './styles.css';
+import getFirebaseConfig from './firebase.config';
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
 import createProject from './project';
 import addForm from './addForm';
 import showProject from './projectDOM';
 import changeTab from './tabs';
 import storage from './storage';
+
+const firebaseConfig = getFirebaseConfig();
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 const eventAdder = (() => {
 
@@ -25,9 +32,18 @@ const eventAdder = (() => {
         });
     }
 
+    const addSave = () => {
+        document.querySelector("#save-btn")
+            .addEventListener('click', e => {
+                storage.addProjectToStore();
+                storage.addHistorytoFirestore();
+            });
+    }
+
     return {
         addEvent,
         addE,
+        addSave,
     }
 })();
 
@@ -40,12 +56,12 @@ const loadUp = () => {
     if(!localStorage.getItem('projects')){
         defaultProject();
     }
-
-    storage.getHistory();
-    storage.getProjects();
+    storage.getProjectsFromFirestore();
+    storage.getHistoryFromFirestore();
 
     eventAdder.addEvent();
     eventAdder.addE();
+    eventAdder.addSave();
     
     changeTab.setButtons();
     console.log(changeTab.tab);
@@ -53,12 +69,10 @@ const loadUp = () => {
     if(createProject.projects.length > 0){
         showProject.displayProject(createProject.projects[0]);
     }
-    
 }
 
 const store = () => {
-    storage.storeProjects();
-    storage.storeHistory();
+
 }
 
 window.addEventListener('beforeunload' , store);
@@ -66,3 +80,4 @@ window.addEventListener('beforeunload' , store);
 loadUp();
 
 export default eventAdder;
+export { db };

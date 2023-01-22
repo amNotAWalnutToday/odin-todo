@@ -1,21 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<html>
+  <head>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ToDo</title>
     <script src="./main.js" defer></script>
     <link rel="icon" href="https://cdn.pixabay.com/photo/2013/07/13/14/06/pen-162124_960_720.png">
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Rubik+Marker+Hatch&display=swap" rel="stylesheet">
-</head>
-<body>
+    <!-- update the version number as needed -->
+    <!-- include only the Firebase features as you need -->
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+  </head>
+  <body>
     <div id="container">
         <div id="header">
             <div class="todo-title">
                 <img src="https://cdn.pixabay.com/photo/2013/07/12/18/05/ring-binder-152952_960_720.png" alt="">
                 <h1>ToDo</h1>
             </div>
+            <button id="save-btn" >Save</button>
         </div>
         <div id="navbar">
             <div id="nav">
@@ -81,5 +88,22 @@
         </div>
     </div>
     <div id="popup" class="hidden"></div>
-</body>
+
+    <script>
+      // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+      // // The Firebase SDK is initialized and available here!
+      //
+      // firebase.auth().onAuthStateChanged(user => { });
+      // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+      // firebase.firestore().doc('/foo/bar').get().then(() => { });
+      // firebase.functions().httpsCallable('yourFunction')().then(() => { });
+      // firebase.messaging().requestPermission().then(() => { });
+      // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+      // firebase.analytics(); // call to activate
+      // firebase.analytics().logEvent('tutorial_completed');
+      // firebase.performance(); // call to activate
+      //
+      // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+    </script>
+  </body>
 </html>
